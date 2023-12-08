@@ -1,0 +1,34 @@
+<%- include('partials/header'); -%>
+
+    </head>
+
+    <body>
+        <h1 style="padding-top: 100px;
+    text-align: center;
+    color: #ffffff;">Fill auction details</h1>
+        <div class="signin-div" style="min-height: 100vh; margin-top: 100px;">
+            <form action="/createauction" method="post">
+                <label for="product">Product:</label>
+                <input type="text" id="product" name="product">
+
+                <label for="baseprice">BasePrice:</label>
+                <input type="number" id="baseprice" name="baseprice">
+
+                <label for="startdate">StartDate:</label>
+                <input type="text" id="startdate" name="startdate">
+
+                <label for="starttime">StartTime:</label>
+                <input type="text" id="starttime" name="starttime">
+
+                <label for="duration">Duration of auction (min:30mins , max: 120mins):</label>
+                <input type="number" id="duration" name="duration" min="30" max="120">
+
+                <button type="submit" class="d-block mx-auto" style=" grid-column-start: 1;grid-column-end: 3;">
+                    Create</button>
+            </form>
+
+        </div>
+
+
+
+        <%- include('partials/footer'); -%>

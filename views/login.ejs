@@ -1,0 +1,24 @@
+
+<%- include('partials/header'); -%>
+
+</head>
+<body>
+    <h1
+    style="padding-top: 100px;
+    text-align: center;
+    color: #ffffff;">Login Page</h1>
+    <div class="login-div" style="min-height: 100vh; margin-top: 100px;">
+        <form action="/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            
+            <button type="submit" >Login</button>
+            <p style="text-align: center;color:rgb(0, 0, 0)">Don't have an account? <a href="/signup">Sign Up</a></p>
+        </form>
+        
+    </div>
+	
+<%- include('partials/footer'); -%>

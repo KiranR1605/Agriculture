@@ -1,0 +1,143 @@
+<%- include("partials/header") -%>
+
+<style>
+
+</style>
+</head>
+<body>
+  <script>
+    var wallet='<%= user.wallet %>';
+  </script>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand ms-3" href="#">AGROW</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto me-2">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/history">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/wallet">Add to Wallet</a>
+            </li>
+            <li class="nav-item ms-2 me-2">
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= user.name %>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-start" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="nav-link" href="/logout">Log out</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="search-bar p-3 ps-5">
+      <span>
+        <span><input class="me-2" type="text" /><i class="fa-solid fa-magnifying-glass"></i></span>
+      <span class="ms-5">Search for products</span>
+      </span>
+      <span class="wallet-amount">wallet amount: <i class="fa-solid fa-indian-rupee-sign me-2"></i><%= user.wallet %></span>
+    </div>
+      <div class="timings-notice d-flex justify-content-around p-3 text-white">
+        <span>Auction Timings: 5:00 - 13:00</span>
+        <span>Weekoffs: Tuesday</span>
+        <span>Sale Days: Sunday</span>
+      </div>
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="carousel-img">
+              <img src="/images/carousel1.jpg" alt="" priority>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Effort meets rewards</h5>
+              <p>Use the benefit of actual demand in the market</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-img">
+              <img src="/images/carousel2.jpg" alt="" priority>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Easy to sell</h5>
+              <p>Leave the effort to sell in our hands</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-img">
+              <img src="/images/carousel3.jpg" alt="" priority>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Self sustainability</h5>
+              <p>Its now, no more required to rely on local vendors</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="steps-to-start">
+        <div class="steps">
+            <h3>Steps to start</h3>
+            <ol>
+                <li>Click on start auction</li>
+                <li>Enter details of the product</li>
+                <li>Quote minimum price and wait</li>
+            </ol>
+        </div>
+        <div class="a-wrapper">
+            <a href="/createauction">Start Auction Now</a>
+        </div>
+      </div>
+      <div class="auction-list">
+        <h3>On Going Auctions ...</h3>
+        <br>
+        <% if(auctions.length != 0){ %>
+          <% for(var i=0;i < auctions.length;i++){ %>
+            <div class="auction-li">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.avb9nDfw3kq7NOoP0grM4wHaEK&pid=Api&P=0">
+                <% const link = "/enterauction/"+String(i) %>
+                <div class="w-100">
+                  <div>Product Name: <%= auctions[i].product %></div>
+                  <div>Auction Started at: <%= auctions[i].startTime %></div>
+                  <div>Product Base Price: <%= auctions[i].baseprice %></div>
+                  <% if(user.wallet>=auctions[i].baseprice){ %>
+                  <a href=<%= link %>>Click to bid</a>
+                  <% } else { %>
+                  <a href="#">Insufficient amount</a>
+                  <% } %>
+              </div>
+            </div>
+              <% } %>
+          <% } else { %>
+            <div class="auction-li w-100">
+              <h1>No ongoing auctions... <i class="fa-solid fa-face-smile-upside-down"></i></h1>
+            </div>
+          <% } %>
+      </div>
+<%- include("partials/footer") -%>

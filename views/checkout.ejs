@@ -1,0 +1,47 @@
+<%- include('partials/header'); -%>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand ms-3" href="#">AGROW</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto me-2">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log out</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    
+    <div class="product d-flex flex-column justify-content-center align-items-center pt-5">
+      <div class="w-50 d-flex flex-column justify-content-center align-items-center pt-5 bg-light text-dark">
+
+          <h1 class="mt-5">Enter amount to add to your wallet</h1>
+
+        <form action="/create-checkout-session" class="w-25" method="POST">
+          <div class="input-group mt-5 mb-3">
+            <span class="input-group-text"><i class="fa-solid fa-indian-rupee-sign me-2"></i></span>
+            <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" name="amount">
+          </div>
+          <button type="submit" id="checkout-button" class="d-block mx-auto">Checkout</button>
+        </form>
+      </div>
+    </div>
+    
+	
+<%- include('partials/footer'); -%>

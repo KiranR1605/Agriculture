@@ -1,0 +1,57 @@
+<%- include('partials/header'); -%>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand ms-3" href="#">AGROW</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto me-2">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log out</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">SL.NO</th>
+            <th scope="col">Product</th>
+            <th scope="col">Seller/Buyer</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%const transaction=user.transactions%>
+            <%for(var i=0;i<transaction.length;i++){%>
+          <tr>
+            <th scope="row"><%= i %></th>
+            <td><%=transaction[i].product </td>
+            <% if(transaction[i].bought===true){ %>
+            <td><%=transaction[i].buyerUsn%></td>
+            <%}else{%>
+                <td><%=transaction[i].sellerUsn%></td>
+            <%}%>
+            <td><%= transaction[i].amount%></td>
+            
+          </tr>
+          <%}%>
+        </tbody>
+      </table>
+	
+<%- include('partials/footer'); -%>

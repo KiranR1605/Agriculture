@@ -1,0 +1,96 @@
+<%- include('partials/header'); -%>
+<style>
+  h1{
+    color: white;
+    text-align: center;
+  }
+.timer-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width:40%;
+  background-color: aliceblue;
+  color: black;
+  margin: 5%;
+  text-align: center;
+  border-radius: 4px;
+}
+.bid-details-div{
+  margin: 5%;
+  height: 300px;
+  width: 50%;
+  background-color: rgba(3, 2, 0, 0.504);
+}
+.my-bid-div{
+  margin: 5%;
+  height: 300px;
+  width: 50%;
+  background-color: rgba(3, 2, 0, 0.504);
+  gap: 1rem;
+}
+.my-bid-div input{
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg text-white">
+    <a class="navbar-brand ms-3" href="#">AGROW</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto me-2">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="p-5">
+    <h1 class="">Bidding ends in.........</h1>
+  <div class="d-flex justify-content-center">
+    <div class="timer-div">
+      <h1 style="color: black; font-size: 80px; font-family: 'Play', sans-serif;">88:88:88</h1>
+    </div>
+  </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="bid-details-div d-flex flex-column justify-content-center align-items-center">
+      <h1>Highest-bid: <%= bidamount %></h1>
+      <h1>Name: <%= bidder %></h1>
+      <h1>Owner: <%= owner %></h1>
+      <h1></h1>
+    </div>
+    <div class="my-bid-div card d-flex flex-row justify-content-center align-items-center p-5">
+      <h2>Enter your bid amount</h2>
+      
+      <form action="/enterauction/<%= roomId %>" method="post">
+        <div class="w-100 d-flex justify-content-center align-items-center bg-light text-black">
+          <input type="number" class="d-inline mb-0 bg-light text-black" name="bidamount">
+          <i class="fa-solid fa-indian-rupee-sign me-2"></i>
+        </div>
+        
+        <button style="color: black; background-color: rgb(14, 85, 17);" class="btn btn-outline-lignt w-100 mt-5" type="submit">bid</button>
+      </form>
+      
+    </div>
+  </div>
+  
+    
+<%- include('partials/footer'); -%>
